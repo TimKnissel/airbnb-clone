@@ -167,6 +167,7 @@
     width: 25rem;
     height: 31rem;
     left: 60rem;
+    overflow: auto;
 
     border: 1px solid rgb(221, 221, 221);
     border-radius: 12px;

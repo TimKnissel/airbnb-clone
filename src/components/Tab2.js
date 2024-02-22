@@ -16,92 +16,104 @@ import { BiBuildingHouse } from "react-icons/bi"
 import { Pagination } from "swiper";
 
 
-// TAB 2 = nationalpark
+// TAB 2 = GLACIER, (winter)
 
 const Tab2 = ({ pushDown }) => {
- 
+
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      };
+    
+      const shuffledPlacesStore = shuffleArray([...placesStore]);
 
     return (
         <div>
             <div className='tab1-hold flex justify-center md:mb-48 mb-28 items-center sm:gap-12 gap-0 -mt-16 flex-wrap w-full'>
-                {placesStore.map((item => {
-                    if (item.type === "nationalpark") {
-                        return (
-                            <div className='card boxsh' key={item.id}>
+                {shuffledPlacesStore.map((item => {
+                    if (item.season === "winter") {
+                        if (item.type == "glacier") {
 
-                                <Link to={`/${item.id}`}>
+                            return (
+                                <div className='card boxsh' key={item.id}>
 
-                                    <Swiper
-                                        spaceBetween={5}
-                                        slidesPerView={1}
-                                        navigation={{
-                                            nextEl: ".swiper-button-next",
-                                            prevEl: ".swiper-button-prev",
-                                        }}
-                                        loop={true}
-                                        observer={true}
-                                        observeParents={true}
-                                        parallax={true}
-                                        pagination={{
-                                            clickable: true,
-                                        }}
-                                        modules={[Pagination]}
+                                    <Link to={`/${item.id}`}>
 
-                                    >
-                                        <SwiperSlide>
-                                            <img src={item.homeMainPic} className="cardImg" />
-                                        </SwiperSlide>
+                                        <Swiper
+                                            spaceBetween={5}
+                                            slidesPerView={1}
+                                            navigation={{
+                                                nextEl: ".swiper-button-next",
+                                                prevEl: ".swiper-button-prev",
+                                            }}
+                                            loop={true}
+                                            observer={true}
+                                            observeParents={true}
+                                            parallax={true}
+                                            pagination={{
+                                                clickable: true,
+                                            }}
+                                            modules={[Pagination]}
 
-                                        <SwiperSlide>
-                                            <img src={item.carouselPic1} className="cardImg" />
-                                        </SwiperSlide>
+                                        >
+                                            <SwiperSlide>
+                                                <img src={item.homeMainPic} className="cardImg" />
+                                            </SwiperSlide>
 
-                                        <SwiperSlide>
-                                            <img src={item.carouselPic2} className="cardImg" />
-                                        </SwiperSlide>
+                                            <SwiperSlide>
+                                                <img src={item.carouselPic1} className="cardImg" />
+                                            </SwiperSlide>
 
-                                        <SwiperSlide>
-                                            <img src={item.carouselPic3} className="cardImg" />
-                                        </SwiperSlide>
+                                            <SwiperSlide>
+                                                <img src={item.carouselPic2} className="cardImg" />
+                                            </SwiperSlide>
 
-                                        <SwiperSlide>
-                                            <img src={item.carouselPic4} className="cardImg" />
-                                        </SwiperSlide>
+                                            <SwiperSlide>
+                                                <img src={item.carouselPic3} className="cardImg" />
+                                            </SwiperSlide>
 
-                                        <SwiperSlide>
-                                            <img src={item.carouselPic5} className="cardImg" />
-                                        </SwiperSlide>
+                                            <SwiperSlide>
+                                                <img src={item.carouselPic4} className="cardImg" />
+                                            </SwiperSlide>
 
-                                    </Swiper>
+                                            <SwiperSlide>
+                                                <img src={item.carouselPic5} className="cardImg" />
+                                            </SwiperSlide>
 
-                                    {item.pets && <div className='flex label'> <BsStars /> POPULAR </div>}
+                                        </Swiper>
 
-                                    <div className='flex gap-0 pl-3 pr-3 justify-between'>
+                                        {item.pets && <div className='flex label'> <BsStars /> POPULAR </div>}
 
-                                        <div className='flex'>
-                                            <p className=' text-violet-600 font-semibold mr-1 text-2xl'> ${item.price.toLocaleString()}</p>
-                                            <p className='text-gray-400 text-sm pt-2'> /month </p>
+                                        <div className='flex gap-0 pl-3 pr-3 justify-between'>
+
+                                            <div className='flex'>
+                                                <p className=' text-violet-600 font-semibold mr-1 text-2xl'> € {item.price.toLocaleString()}</p>
+                                                {/*<p className='text-gray-400 text-sm pt-2'> 5 days </p>*/}
+                                            </div>
+
+                                            <FiHeart className='text-sm heartCrad  boxsh' />
+
                                         </div>
 
-                                        <FiHeart className='text-sm heartCrad  boxsh' />
+                                        <p className='text-2xl pl-3'> {item.name} </p>
+
+                                        <p className='text-gray-400 text-sm pl-3 mb-3 mt-2'> {item.organizer} </p>
+                                        <hr className='mb-4' />
+
+                                        <div className='flex justify-center pl-2 gap-4 md:gap-3'>
+                                        <span className='flex items-center'> <IoBedOutline className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'>{item.duration_days} day(s) </p></span>
+                                        <span className='flex items-center'> <GiBathtub className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'>{item.hut_included ? "Hut included" : "Hut not included"}</p> </span>
+                                        <span className='flex items-center'> <BiBuildingHouse className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'> {item.persons} person(s) </p></span>
 
                                     </div>
 
-                                    <p className='text-2xl pl-3'> {item.name} </p>
-
-                                    <p className='text-gray-400 text-sm pl-3 mb-3 mt-2'> 2699 Green Valley hughland lake ... </p>
-                                    <hr className='mb-4' />
-
-                                    <div className='flex justify-center pl-2 gap-4 md:gap-3'>
-                                        <span className='flex items-center'> <IoBedOutline className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'>{Math.floor(Math.random() * 5) + 2} beds </p></span>
-                                        <span className='flex items-center'> <GiBathtub className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'>{Math.floor(Math.random() * 5) + 2} bath </p> </span>
-                                        <span className='flex items-center'> <BiBuildingHouse className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'> {Math.floor(Math.random() * 2) + 2} floors </p></span>
-
-                                    </div>
-
-                                </Link>
-                            </div>
-                        )
+                                    </Link>
+                                </div>
+                            )
+                        }
                     }
 
                 }))}

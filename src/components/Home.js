@@ -18,12 +18,14 @@ import { IoLocationOutline } from "react-icons/io5";
 import { LoginSocialGoogle } from 'reactjs-social-login';
 import { StickyContainer, Sticky } from 'react-sticky';
 import GoogleButton from 'react-google-button'
+import { placesStore } from '../store/Store'
+
 
 const Home = ({ toggle, setToggle }) => {
 
   const [inputValue, setInputeValue] = useState("");
 
-  const [linkClickedVlaue, setLinkClickedValue] = useState("");
+  const [linkClickedValue, setLinkClickedValue] = useState("");
 
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -87,71 +89,45 @@ const Home = ({ toggle, setToggle }) => {
 
 
 
-  const placesArray = [
+  /*const placesArray = [
     {
       id: "1",
-      place: "london"
+      place: "austria"
     },
     {
       id: "2",
-      place: "russia"
+      place: "germany"
     },
     {
       id: "3",
-      place: "spain"
+      place: "switzerland"
     },
     {
       id: "4",
-      place: "brazil"
-    },
-    {
-      id: "5",
-      place: "india"
-    },
-    {
-      id: "6",
-      place: "france"
-    },
-
-    {
-      id: "9",
       place: "italy"
     },
     {
-      id: "10",
-      place: "australia"
+      id: "5",
+      place: "france"
     },
     {
-      id: "11",
-      place: "canada"
-    },
-    {
-      id: "12",
-      place: "spain"
-    },
-    {
-      id: "13",
-      place: "usa"
-    },
-    {
-      id: "14",
-      place: "kyiv"
-    },
-    {
-      id: "15",
-      place: "ukraine"
-    },
-    {
-      id: "16",
-      place: "newyork"
-    },
-    {
-      id: "17",
-      place: "europe"
-    },
+      id: "6",
+      place: "other"
+    }
+  ]*/
 
-  ]
+  // Extract unique locations from placesStore
+  const uniqueLocations = [...new Set(placesStore.map(place => place.location))];
+  const uniqueNames = [...new Set(placesStore.map(place => place.name_search))];
 
+  uniqueLocations.push(...uniqueNames);
+
+  // Create placesArray dynamically
+  const placesArray = uniqueLocations.map((location, index) => ({
+      id: (index + 1).toString(),
+      place: location
+  }));
+  
 
   return (
 
@@ -181,9 +157,10 @@ const Home = ({ toggle, setToggle }) => {
 
 
               <label htmlFor='my-modal-4' className='navbarAnyHold flex inpWidth2 cursor-pointer'>
-                <p className=' inline-block'> Anywhere <p className=' inline-block ml-1'> | </p> </p>
-                <p className=' inline-block'> Any Week <p className=' inline-block ml-1'> | </p> </p>
-                <p className=' text-gray-400 whitespace-nowrap '> Add guests <AiOutlineSearch className=' whitespace-nowrap inline-block' /> </p>
+                <p className=' inline-block'> Wohin <p className=' inline-block ml-1'> | </p> </p>
+                <p className=' inline-block'> Wann <p className=' inline-block ml-1'> | </p> </p>
+                <p className=' inline-block'> Suche <AiOutlineSearch className=' whitespace-nowrap inline-block' /> </p>
+                {/*<p className=' text-gray-400 whitespace-nowrap '> Add guests <AiOutlineSearch className=' whitespace-nowrap inline-block' /> </p>*/}
               </label>
 
 
@@ -211,42 +188,48 @@ const Home = ({ toggle, setToggle }) => {
 
                           <div className='absolute z-50 tabContentPlaces'>
                             {inputValue === "" ? <> <div className='tabContent1Hold cursor-pointer'>
-                              <Link to={`/location/usa`}>
+                              <Link to={`/location/austria`} onClick={() => setToggle(!toggle)}>
+                                {/*<p className='tabContent1Image'>Austria</p>*/}
                                 <img src='https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg' className='tabContent1Image' />
                               </Link>
-                              <Link to={`/location/europe`}>
+                              <Link to={`/location/germany`} onClick={() => setToggle(!toggle)}>
+                              {/*<p className='tabContent1Image'>Germany</p>*/}
                                 <img src='https://a0.muscache.com/im/pictures/7b5cf816-6c16-49f8-99e5-cbc4adfd97e2.jpg?im_w=320' className='tabContent1Image' />
                               </Link>
 
-                              <Link to={`/location/london`}>
+                              <Link to={`/location/switzerland`} onClick={() => setToggle(!toggle)}>
+                                {/*<p className='tabContent1Image'>Switzerland</p>*/}
                                 <img src='https://a0.muscache.com/im/pictures/dbb2b5ef-2efe-4099-81ac-c7b957f384ed.jpg?im_w=320' className='tabContent1Image' />
                               </Link>
 
                             </div>
 
                               <div className='secImages'>
-                                <Link to={`/location/canada`}>
+                                <Link to={`/location/italy`} onClick={() => setToggle(!toggle)}>
+                                  {/*<p className='tabContent1Image'>Italy</p>*/}
                                   <img src='https://a0.muscache.com/im/pictures/d77de9f5-5318-4571-88c7-e97d2355d20a.jpg?im_w=320' className='tabContent1Image' />
                                 </Link>
-                                <Link to={`/location/italy`}>
+                                <Link to={`/location/france`} onClick={() => setToggle(!toggle)}>
+                                  {/*<p className='tabContent1Image'>France</p>*/}
                                   <img src='https://a0.muscache.com/im/pictures/ebc5a343-8b76-4ae5-8700-eb5e9cec9243.jpg?im_w=320' className='tabContent1Image mr-1' />
                                 </Link>
-                                <Link to={`/location/kyiv`}>
+                                <Link to={`/location/other`} onClick={() => setToggle(!toggle)}>
+                                  {/*<p className='tabContent1Image'>Other</p>*/}
                                   <img src='https://a0.muscache.com/im/pictures/66355b01-4695-4db9-b292-c149c46fb1ca.jpg?im_w=320' className='tabContent1Image' />
                                 </Link>
                               </div>
 
                               <div className='secText flex  top-24 relative left-16'>
-                                <p className='fs'> SouthEast Asia </p>
-                                <p className='fs'> Indonesia </p>
-                                <p className='fs'> MiddleEast </p>
+                                <p className='fs'> italy </p>
+                                <p className='fs'> france </p>
+                                <p className='fs'> other </p>
                               </div>
 
 
                               <div className='imgCaptionHold flex flex-wrap'>
-                                <p className='fs'> I'm flexible  </p>
-                                <p className='fs'> Europe</p>
-                                <p className='fs'> United Kingdom </p>
+                                <p className='fs'> austria  </p>
+                                <p className='fs'> germany </p>
+                                <p className='fs'> switzerland </p>
 
                               </div>  </> : <>
                               <div className='serachResultsHold'>
@@ -264,7 +247,7 @@ const Home = ({ toggle, setToggle }) => {
                                     return (
                                       <div className='searcdisplayIndivitual'>
                                         <div>
-                                          <Link to={`/location/${linkClickedVlaue}`}>
+                                          <Link to={`/location/${linkClickedValue}` } onClick={() => setToggle(!toggle)}>
                                             <IoLocationOutline className=' inline-block mb-2 text-2xl' />
                                             <p onMouseOver={(e) => setLinkClickedValue(e.target.innerText)} className="capitalize fof inline-block">  {item.place} </p>
                                           </Link>

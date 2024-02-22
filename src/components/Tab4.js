@@ -17,14 +17,17 @@ import { BiBuildingHouse } from "react-icons/bi"
 import { Pagination } from "swiper";
 
 
-const Tab4 = () => {
+//TAB 4 = other
+
+
+const Tab4 = ({ pushDown }) => {
 
 
     return (
         <div>
             <div className='tab1-hold flex justify-center md:mb-48 mb-28 items-center sm:gap-12 gap-0 -mt-16 flex-wrap w-full'>
                 {placesStore.map((item => {
-                    if (item.type === "beaches") {
+                    if (item.type === "other") {
                         return (
                             <div className='card boxsh' key={item.id}>
 
@@ -78,8 +81,8 @@ const Tab4 = () => {
                                     <div className='flex gap-0 pl-3 pr-3 justify-between'>
 
                                         <div className='flex'>
-                                            <p className=' text-violet-600 font-semibold mr-1 text-2xl'> ${item.price.toLocaleString()}</p>
-                                            <p className='text-gray-400 text-sm pt-2'> /month </p>
+                                            <p className=' text-violet-600 font-semibold mr-1 text-2xl'> € {item.price.toLocaleString()}</p>
+                                            {/*<p className='text-gray-400 text-sm pt-2'> 5 days </p>*/}
                                         </div>
 
                                         <FiHeart className='text-sm heartCrad  boxsh' />
@@ -88,13 +91,13 @@ const Tab4 = () => {
 
                                     <p className='text-2xl pl-3'> {item.name} </p>
 
-                                    <p className='text-gray-400 text-sm pl-3 mb-3 mt-2'> 2699 Green Valley hughland lake ... </p>
+                                    <p className='text-gray-400 text-sm pl-3 mb-3 mt-2'> {item.organizer} </p>
                                     <hr className='mb-4' />
 
                                     <div className='flex justify-center pl-2 gap-4 md:gap-3'>
-                                        <span className='flex items-center'> <IoBedOutline className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'>{Math.floor(Math.random() * 5) + 2} beds </p></span>
-                                        <span className='flex items-center'> <GiBathtub className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'>{Math.floor(Math.random() * 5) + 2} bath </p> </span>
-                                        <span className='flex items-center'> <BiBuildingHouse className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'> {Math.floor(Math.random() * 2) + 2} floors </p></span>
+                                        <span className='flex items-center'> <IoBedOutline className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'>{item.duration_days} day(s) </p></span>
+                                        <span className='flex items-center'> <GiBathtub className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'>{item.date}</p> </span>
+                                        {/*<span className='flex items-center'> <BiBuildingHouse className=' md:text-2xl text-xl mr-2' /> <p className='text-sm text-gray-400 w-16'> {item.persons} person(s) </p></span>*/}
 
                                     </div>
 

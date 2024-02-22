@@ -53,9 +53,17 @@
     left: 28rem;
 }
 
+.searchRevHoldNew {
+    width: 34rem !important;
+    top: 2rem !important;
+    left: 28rem;
+    font-size: 14px !important;
+    gap: 13.4rem !important;
+}
+
 .searchRevHold {
     width: 34rem !important;
-    top: -146.4rem !important;
+    top: -80.4rem !important;
     left: 28rem;
     font-size: 14px !important;
     gap: 13.4rem !important;
@@ -118,7 +126,7 @@
 
 .SDPprice {
     position: relative;
-    top: 6.7rem;
+    top: 4.7rem;
     left: 55rem !important;
 }
 

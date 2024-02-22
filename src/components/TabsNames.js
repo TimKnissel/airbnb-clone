@@ -6,16 +6,9 @@ const TabsNames = () => {
 
         <div className='tab-name-holder'> 
 
-        <p> TROPICAL</p>
-        <p> MOUNTAIN</p>
-        <p> POOL</p>
-        <p> BEACH</p>
-        <p> HOMES</p>
-        <p> DESIGN</p>
-        <p> ISLAND</p>
-        <p> VIEW </p>
-        <p> COUPLE</p>
-        <p> ARCTIC</p>
+        <p> ALL</p>
+        <p> GLACIER</p>
+        <p> EVENTS</p>
 
         </div>
 

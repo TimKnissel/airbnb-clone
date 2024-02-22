@@ -19,7 +19,8 @@ function App() {
       <main>
         <BrowserRouter>
           <Routes>
-            <Route path="/" exact element={<>  <Home toggle={open} setToggle={setOpen} /> <TabsComp toggle={open} setToggle={setOpen} />  <SearchPageFooter /> </>} />
+            {/*<Route path="/" exact element={<>  <Home toggle={open} setToggle={setOpen} /> <TabsComp toggle={open} setToggle={setOpen} />  <SearchPageFooter /> </>} />*/}
+            <Route path="/" exact element={<>  <Home /> <TabsComp toggle={open} setToggle={setOpen} />  <SearchPageFooter /> </>} />
             <Route path="/:id" element={<>  <Home /> <SinglePage /> </>} />
             <Route path="/checkout/:id/:days" exact element={<> <Home />  <Checkout /> </>} />
             <Route path="/location/:loc" exact element={<>  <Home /> <SearchDetails /> </>} />

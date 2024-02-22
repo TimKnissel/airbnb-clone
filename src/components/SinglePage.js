@@ -45,7 +45,7 @@ const SinglePage = () => {
 
     const placeClicked = placesStore.find((item) => item.id === id)
 
-    const { name, homeMainPic, price, stars, carouselPic1, carouselPic2, carouselPic3, carouselPic4, carouselPic5 } = placeClicked || {}
+    const { name, homeMainPic, price, organizer, persons, duration_days, hut_included, dates, stars, carouselPic1, carouselPic2, carouselPic3, carouselPic4, carouselPic5 } = placeClicked || {}
 
     const [activeImg, setActiveImg] = useState(false);
 
@@ -91,9 +91,9 @@ const SinglePage = () => {
                 <img src={carouselPic5} className="w-40 rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
             </div>
 
-            <p className='features-text text-2xl font-semibold uppercase'>Entire rental unit hosted by Ben  </p>
+            <p className='features-text text-2xl font-semibold uppercase'> {name} : Informationen </p>
 
-            <p className='actual-features text-xl'>{Math.floor(Math.random() * 6) + 3} guests . {Math.floor(Math.random() * 6) + 1} . bedrooms {Math.floor(Math.random() * 5) + 3} beds . {Math.floor(Math.random() * 2) + 3}  bathrooms</p>
+            <p className='actual-features text-xl'>{persons} person(s) . {duration_days} day(s) . {hut_included ? "Hut included" : "Hut not included"} </p>
 
             <p className='line1 text-gray-300'>__________________________________________________________________________________________________________</p>
             <p className='line2 text-gray-300'>__________________________________________________________________________________________________________</p>
@@ -108,20 +108,20 @@ const SinglePage = () => {
             </div>
 
             <div className='heading-hold'>
-                <p className='text-xl font-semibold'>Ben is a Superhost. </p>
+                <p className='text-xl font-semibold'>{organizer} is a Superhost. </p>
                 <p className='text-xl font-semibold'>Great check-in experience.  </p>
                 <p className='text-xl font-semibold'>Free cancellation for 48 hours. </p>
             </div>
 
             <div className='description-hold'>
-                <p> highly rated hosts who are committed to providing great stays for their guests.</p>
+                <p> highly rated hosts who are committed to providing great tours for their guests.</p>
                 <p className='-mt-4 sm:mt-0'>90% of recent guests gave the check-in process a 5-star rating.</p>
                 <p className='mt-4 sm:mt-0'>No questions asked.</p>
 
             </div>
 
             <div className='side-box-card absolute'>
-                <p className='single-page-price font-semibold text-2xl'> ${price}/ Night   </p>
+                <p className='single-page-price font-semibold text-2xl'> € {price} / p.P. </p>
 
                 <div className='ab'>
                     <FaStar />
@@ -130,37 +130,61 @@ const SinglePage = () => {
                 <p className='rev-card absolute'>{stars}</p>
                 <p className='rev2-card font-semibold'> <p>{Math.floor(Math.random() * (999 - 100 + 1) + 100)} reviews</p>  </p>
 
+                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
+                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
+                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
+                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
+                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
+                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
+                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
+                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
+                <br></br>
+                <p>Guide fee: {price}</p>
+                <p>Service fee: {price * 0.03}</p>
+                <p>TOTAL: {price + price * 0.03}</p>
+                <div>
+                    <button className='reserve-date-button rounded-xl' onClick={buttonOpenHandler}> Reserve</button>
+                </div>
             </div>
 
-            <div className='reserve-date-button-holder'>
+            {/*<div className='reserve-date-button-holder'>
                 <button className='reserve-date-button rounded-xl' onClick={buttonOpenHandler}> Reserve</button>
 
-            </div>
+            </div>*/}
 
 
-            <div className="s">
+            {/*<div className="s">
                 <CalendarFunc placesId={id} placesNam={name} placesPic={carouselPic1} buttonopenState={buttonOpen} buttonCloseState={buttonClose} closeFunc={buttonCloseHandler} />
-            </div>
+            </div>*/}
 
-            <div className='expense-title-hold'>
-                <p>Servicing Fee</p>
-                <p>Cleaning Fee</p>
-                <p>Processing Fee</p>
-            </div>
+            {/*<div className='expense-title-hold'>
+                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
+                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
+                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
+                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
+                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
+                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
+                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
+                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
+                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
+                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
+                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
+                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
+            </div>*/}
 
-            <div className='calculated-expense-hold'>
+            {/*<div className='calculated-expense-hold'>
 
                 <p className='relative w-40 le'>calculated at next step</p>
-                <p>180</p>
-                <p>230</p>
-                <p>450</p>
+                <p></p>
+                <p>{price}</p>
+                <p>{price * 0.04}</p>
 
-            </div>
-            <div className='line-total text-gray-300'>_____________________________________________________</div>
+            </div>*/}
+            {/*<div className='line-total text-gray-300'>_____________________________________________________</div>
 
-            <div className='price-total-text absolute font-semibold text-xl uppercase'>Total</div>
+            <div className='price-total-text absolute font-semibold text-xl uppercase'>Guide fee</div>
 
-            <p className='price-total absolute font-semibold text-xl'>Calculated At Checkout</p>
+            <p className='price-total absolute font-semibold text-xl'>Calculated At Checkout</p>*/}
 
 
             <SinglePageMiddle />

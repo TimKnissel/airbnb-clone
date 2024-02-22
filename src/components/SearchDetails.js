@@ -26,6 +26,9 @@ const SearchDetails = (props) => {
     const { loc } = params;
 
     var placeDetailsArray = placesStore.filter((item) => item.location.toLocaleLowerCase().includes(loc.toLocaleLowerCase()));  // getting the details from the main array with filter and storing it in "placeDetailsArray" and then passing it on to "orignalArray" state
+    var nameDetailsArray = placesStore.filter((item) => item.name_search.toLocaleLowerCase().includes(loc.toLocaleLowerCase()));  // getting the details from the main array with filter and storing it in "placeDetailsArray" and then passing it on to "orignalArray" state
+
+    placeDetailsArray.push(...nameDetailsArray);
 
     const [orignalArray, setOriginalArray] = useState(placeDetailsArray);
 
@@ -182,9 +185,20 @@ const SearchDetails = (props) => {
                                 <div className='searchDatarevHold flex flex-col gap-1 relative'>
                                     <p className='fof text-md h-1'> {item.name} </p>
                                 </div>
+                                {/* Comments */}
+                                <div className='searchRevHoldNew flex flex-col relative'>
+                                    {/*<p className=' text-gray-500'> {item.comment} </p>*/}
+                                    {reviewesArr.slice(0, 1).map((item) => {
+                                        return (
+                                            <div key={Math.random()}>
+                                                <p className=' text-gray-500'> "{item}" </p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
 
                                 <p className=' inline-block relative text-xl mt-1 fof revSearchData'><AiFillStar className=' fill-red-400 pb-1 text-3xl inline-block' />  {item.stars} ({Math.floor(Math.random() * (999 - 100 + 1) + 100)}) </p>
-                                <p className='SDPprice'> ${item.price}/ night </p>
+                                <p className='SDPprice'> ${item.price} </p>
                                 {petReviewes && <p className=' inline-block petWlcHold'> <img src='https://static.vecteezy.com/system/resources/previews/005/484/042/original/dog-logo-illustration-free-vector.jpg' className=' w-16 h-16 inline-block' />  Pets Are welcome </p>}
                                 {co && <p className='coupleFriendlyHold relative'> <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/couple-3431093-2863604.png" className='w-12 pt-1 h-10 pl-2 inline-block' /> Couple Friendly options </p>}
                             </Link>
@@ -199,7 +213,7 @@ const SearchDetails = (props) => {
 
 
 
-            <div className='searchRevHold flex flex-col relative'>
+            {/*<div className='searchRevHold flex flex-col relative'>
 
                 {reviewesArr.slice(0, orignalArray.length).map((item) => {
                     return (
@@ -208,7 +222,7 @@ const SearchDetails = (props) => {
                         </div>
                     )
                 })}
-            </div>
+            </div>*/}
 
 
             {orignalArray.length > 8 ? <div className='spFooterHold relative'>
