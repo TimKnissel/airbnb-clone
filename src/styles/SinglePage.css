@@ -1,20 +1,27 @@
-.single-page-pic {
-    float: left !important;
-    width: 14.5rem !important;
-    height: 200px !important;
-    object-fit: cover !important;
-}
-
-.single-page-name {
-    text-transform: uppercase;
-    left: 9rem;
-    top: 7.5rem;
-    position: relative !important;
+/* Shared styles */
+.basicDeatils,
+.fof,
+.super-host,
+.heart,
+.features-text,
+.actual-features,
+.line1,
+.line2,
+.feature-hold,
+.icon-hold,
+.heading-hold,
+.description-hold,
+.side-box-card,
+.ab,
+.rev-card,
+.rev2-card,
+.reserve-date-button {
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 .basicDeatils {
-    width: 25rem !important;
-    height: 6rem !important;
+    width: 25rem;
+    height: 6rem;
     flex-wrap: nowrap;
     white-space: nowrap;
     display: flex;
@@ -22,73 +29,36 @@
     left: 4rem;
     top: 5rem;
     gap: 3rem;
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
-.fof {
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
-
-}
-
+/* Positioning and layout */
 .single-page-hold {
     position: absolute;
     top: 21rem;
     left: 48rem;
     gap: 9%;
+    display: flex; /* Use flexbox */
     flex-wrap: wrap;
     width: 44rem;
-
 }
 
 .single-page-pic {
+    float: left; /* Avoid using float if possible */
+    width: 14.5rem;
+    height: 200px;
+    object-fit: cover;
     margin-bottom: 5%;
 }
 
 .single-page-main-pic {
     width: 42.5rem;
+    height: 25.5rem;
     position: absolute;
-    left: 3rem;
     top: 20rem;
+    left: 3rem;
     border: none;
     border-radius: 12px;
-
-}
-
-.single-page-star {
-    top: 10.6rem;
-    left: 7.4rem;
-}
-
-.single-page-review {
-    top: 10.1rem;
-    font-size: 21px;
-    font-weight: 400;
-    left: 9.5rem;
-}
-
-.single-page-rev-text {
-    position: absolute;
-    top: 10.4rem;
-    left: 15rem;
-    color: #ff385c;
-    font-weight: 600;
-    font-size: 19px;
-}
-
-.super-host {
-    position: absolute;
-    top: 13rem;
-    font-weight: 500;
-    font-size: 24px;
-    left: 8rem;
-}
-
-.heart {
-    color: black;
-    font-size: 38px;
-    position: absolute;
-    top: 13rem;
-    left: 17.5rem;
 }
 
 .features-text {
@@ -136,7 +106,6 @@
     flex-direction: column;
     left: 12rem;
     gap: 5rem;
-
 }
 
 .description-hold {
@@ -148,39 +117,88 @@
     left: 12rem;
     flex-wrap: wrap;
     font-style: italic;
-
-}
-
-.s {
-    position: absolute !important;
-    top: 100rem !important;
-    left: 20rem !important;
-}
-
-.rdrInputRanges {
-    display: none;
 }
 
 .side-box-card {
     top: 55rem;
-    background-color: white;
+    left: 60rem;
     width: 25rem;
     height: 31rem;
-    left: 60rem;
     overflow: auto;
-
     border: 1px solid rgb(221, 221, 221);
     border-radius: 12px;
     padding: 24px;
-    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-.rdrStaticRanges {
-    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-    border: 1px solid rgb(221, 221, 221);
-
-
+.container {
+    font-family: Arial, sans-serif;
+    margin-top: 1rem;
 }
+
+.date-container {
+    margin-bottom: 10px;
+}
+
+.date-checkbox {
+    display: none;
+}
+
+.date-checkbox + label {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.date-checkbox:checked + label:after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+.selected-date-container{
+    display: flex;
+    justify-content: center;
+}
+
+.selected-date {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.selected-date-price {
+    margin-left: 13rem;
+    display: inline-block;
+}
+
+.price-container {
+    display: flex;
+}
+
+.price-summary {
+    margin-left: 13rem;
+}
+
+.price-summary-total {
+    font-weight: bold;
+    margin-left: 14.3rem;
+}
+
+
+
+
+
 
 .ab {
     position: absolute;
@@ -208,22 +226,19 @@
     justify-content: center;
 }
 
-.reserve-date-button-holder {
-    position: absolute;
-    top: 62rem;
-    left: 65rem;
-    width: 20rem;
+.reserve-date-button-container {
+    display: flex;
+    justify-content: center;
 }
 
 .reserve-date-button {
     background-color: #ff385c;
     height: 3.5rem;
     width: 12rem;
-    transition: 400ms;
+    transition: transform 400ms;
     font-weight: 600;
     font-size: 18px;
     color: white;
-
 }
 
 .reserve-date-button:hover {
@@ -241,11 +256,9 @@
     z-index: 99999999;
 }
 
-
 .rdrDateDisplayWrapper {
-    z-index: 100
+    z-index: 100;
 }
-
 
 .days-0 {
     position: absolute;
@@ -263,63 +276,24 @@
     white-space: nowrap;
 }
 
-
-
-.expense-title-hold {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    top: 71.5rem;
-    left: 62rem;
-}
-
-.calculated-expense-hold {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    top: 68rem;
-    left: 75rem;
-}
-
-.line-total {
-    position: absolute;
-    top: 80.5rem;
-    left: 60rem;
-}
-
-.price-total-text {
-    top: 83.1rem;
-    left: 63rem;
-}
-
-.price-total {
-    top: 83.2rem;
-    left: 67.6rem;
-}
-
 .daysSelected {
     position: absolute;
     top: 1rem;
     left: 18rem;
     width: 2rem;
-
 }
 
-
-@media(min-width:1200px) {
+/* Responsive styles */
+@media (min-width: 1200px) {
     .s {
-        position: absolute !important;
-        top: 100rem !important;
-        left: 20rem !important;
+        position: absolute;
+        top: 100rem;
+        left: 20rem;
         width: 37rem;
     }
-
-
 }
 
-@media(max-width:1340px) {
+@media (max-width: 1340px) {
     .days-updated {
         position: absolute;
         top: 1rem;
@@ -327,18 +301,15 @@
         left: 2rem;
         white-space: nowrap;
     }
-
 }
 
-
-@media(max-width:620px) {
+@media (max-width: 620px) {
     .days-updated {
         top: -3.2rem;
         left: -12rem;
     }
 
-    .rdrCalendarWrapper{
-        left: -13rem !important;
+    .rdrCalendarWrapper {
+        left: -13rem;
     }
-
 }

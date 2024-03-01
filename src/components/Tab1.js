@@ -1,5 +1,5 @@
-import React from 'react'
-import { placesStore } from '../store/Store'
+import React, { useState } from 'react';
+import { placesStore } from '../store/Store';
 import "../styles/Tab1.css";
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,6 +14,7 @@ import { GiBathtub } from "react-icons/gi"
 import { BsStars } from "react-icons/bs"
 import { BiBuildingHouse } from "react-icons/bi"
 import { Pagination } from "swiper";
+import { startDate, endDate } from "./Home";
 
 
 //TAB 1 = ALL 
@@ -32,10 +33,31 @@ const Tab1 = ({ pushDown }) => {
     
       const shuffledPlacesStore = shuffleArray([...placesStore]);
 
+      console.log(startDate);
+      console.log(endDate);
+
+      const filteredPlaces = shuffledPlacesStore.filter(item => {
+        if (!startDate || !endDate) {
+            return true; // If no dates selected, show all places
+        }
+    
+        // Convert item date to JavaScript Date objects
+        const itemDates = Object.values(item.dates);
+    
+        // Check if any date range in itemDates falls within the selected range
+        return itemDates.some(dateObj => {
+            const startDateObj = new Date(dateObj.start_date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+            const endDateObj = new Date(dateObj.end_date.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+            //return startDateObj >= new Date(startDate) && endDateObj <= new Date(endDate);
+            return startDateObj >= new Date(startDate) && endDateObj <= new Date(endDate);
+        });
+    });
+
+
     return (
         <div>
             <div className='tab1-hold flex justify-center md:mb-48 mb-28 items-center sm:gap-12 gap-0 -mt-16 flex-wrap w-full'>
-                {shuffledPlacesStore.map((item => {
+                {filteredPlaces.map((item => {
                     /*if (item.type === "tropical") {*/
                         return (
                             <div className='card boxsh' key={item.id}>

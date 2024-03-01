@@ -45,7 +45,7 @@ const SinglePage = () => {
 
     const placeClicked = placesStore.find((item) => item.id === id)
 
-    const { name, homeMainPic, price, organizer, persons, duration_days, hut_included, dates, stars, carouselPic1, carouselPic2, carouselPic3, carouselPic4, carouselPic5 } = placeClicked || {}
+    const { name, homeMainPic, price, organizer, persons, duration_days, hut_included, dates, reviews, stars, carouselPic1, carouselPic2, carouselPic3, carouselPic4, carouselPic5 } = placeClicked || {}
 
     const [activeImg, setActiveImg] = useState(false);
 
@@ -62,6 +62,13 @@ const SinglePage = () => {
         setActiveImg(false);
     }
 
+    const [selectedDateIndex, setSelectedDateIndex] = useState(null);
+
+    // Function to handle date selection
+    const handleDateToggle = (index) => {
+        setSelectedDateIndex(index);
+    };
+
 
     return (
 
@@ -73,7 +80,7 @@ const SinglePage = () => {
                     <FaStar className=' text-xl inline-block mr-2 ' />
                     <p className=' inline-block'> {stars} </p>
                 </div>
-                <p className=''>{Math.floor(Math.random() * (999 - 100 + 1) + 100)} reviews</p>
+                <p className=''>{reviews.length} reviews</p>
 
             </div>
 
@@ -85,10 +92,10 @@ const SinglePage = () => {
 
 
             <div className='absolute flex single-page-hold'>
-                <img src={carouselPic2} className="w-40 rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
-                <img src={carouselPic3} className="w-40 rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
-                <img src={carouselPic4} className="w-40 rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
-                <img src={carouselPic5} className="w-40 rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
+                <img src={carouselPic2} className="w-40 h-auto rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
+                <img src={carouselPic3} className="w-40 h-auto rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
+                <img src={carouselPic4} className="w-40 h-auto rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
+                <img src={carouselPic5} className="w-40 h-auto rounded-xl cursor-pointer single-page-pic" onMouseOver={getImageSrcHnadler} onMouseLeave={setDefaultImgHnadler} />
             </div>
 
             <p className='features-text text-2xl font-semibold uppercase'> {name} : Informationen </p>
@@ -121,75 +128,65 @@ const SinglePage = () => {
             </div>
 
             <div className='side-box-card absolute'>
-                <p className='single-page-price font-semibold text-2xl'> € {price} / p.P. </p>
-
-                <div className='ab'>
-                    <FaStar />
+                
+                    <p className='single-page-price font-semibold text-2xl inline-block'> Ab {price} € </p>
+                    <p className='inline-block'> &nbsp;/&nbsp; Person</p>
+                
+                
+                <div className="container">
+                <p>_____________________________________</p>
+                    {dates && Object.values(dates).map((date, index) => (
+                        <div className="date-container" key={index}>
+                            <p className='selected-date-price'>{price} € / Person</p>
+                            <p>
+                                <input 
+                                    type="checkbox" 
+                                    id={`date-checkbox-${index}`}
+                                    className="date-checkbox"
+                                    checked={selectedDateIndex === index}
+                                    onChange={() => handleDateToggle(index)} 
+                                />
+                                <label htmlFor={`date-checkbox-${index}`} className="checkmark"></label>
+                                <span>
+                                    {date.start_date} - {date.end_date}
+                                </span>
+                            </p>
+                            <p>_____________________________________</p>
+                        </div>
+                    ))}
+                    <br></br>
+                    {selectedDateIndex !== null && (
+                        <div className='selected-date-container'>
+                            <p className="selected-date">
+                                Selected Date: {Object.values(dates)[selectedDateIndex].start_date} - {Object.values(dates)[selectedDateIndex].end_date}
+                            </p>
+                        </div>
+                    )}
                 </div>
 
-                <p className='rev-card absolute'>{stars}</p>
-                <p className='rev2-card font-semibold'> <p>{Math.floor(Math.random() * (999 - 100 + 1) + 100)} reviews</p>  </p>
-
-                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
-                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
-                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
-                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
-                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
-                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
-                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
-                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
                 <br></br>
-                <p>Guide fee: {price}</p>
-                <p>Service fee: {price * 0.03}</p>
-                <p>TOTAL: {price + price * 0.03}</p>
-                <div>
-                    <button className='reserve-date-button rounded-xl' onClick={buttonOpenHandler}> Reserve</button>
+                <div class="reserve-date-button-container">
+                    <button className='reserve-date-button rounded-xl' onClick={buttonOpenHandler}>Reserve</button>
+                </div>
+                <br></br>
+                <div className='price-container'>
+                    <p>Guide fee</p>
+                    <p className='price-summary'>{price} €</p>
+                </div>
+                <div className='price-container'>
+                    <p>Service fee</p>
+                    <p className='price-summary'>{Math.floor(price * 0.03)} €</p>
+                </div>
+                <p>_____________________________________</p>
+                <div className='price-container'>
+                    <p>TOTAL</p>
+                    <p className='price-summary-total'>{Math.floor(price + price * 0.03)} €</p>
                 </div>
             </div>
 
-            {/*<div className='reserve-date-button-holder'>
-                <button className='reserve-date-button rounded-xl' onClick={buttonOpenHandler}> Reserve</button>
-
-            </div>*/}
-
-
-            {/*<div className="s">
-                <CalendarFunc placesId={id} placesNam={name} placesPic={carouselPic1} buttonopenState={buttonOpen} buttonCloseState={buttonClose} closeFunc={buttonCloseHandler} />
-            </div>*/}
-
-            {/*<div className='expense-title-hold'>
-                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
-                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
-                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
-                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
-                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
-                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
-                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
-                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
-                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
-                <p>{dates.date_1.start_date_1} - {dates.date_1.end_date_1}</p>
-                <p>{dates.date_2.start_date_2} - {dates.date_2.end_date_2}</p>
-                <p>{dates.date_3.start_date_3} - {dates.date_3.end_date_3}</p>
-            </div>*/}
-
-            {/*<div className='calculated-expense-hold'>
-
-                <p className='relative w-40 le'>calculated at next step</p>
-                <p></p>
-                <p>{price}</p>
-                <p>{price * 0.04}</p>
-
-            </div>*/}
-            {/*<div className='line-total text-gray-300'>_____________________________________________________</div>
-
-            <div className='price-total-text absolute font-semibold text-xl uppercase'>Guide fee</div>
-
-            <p className='price-total absolute font-semibold text-xl'>Calculated At Checkout</p>*/}
-
-
             <SinglePageMiddle />
 
-            <Footer1 />
+            {/*<Footer1 />*/}
 
             <Footer2 />
 

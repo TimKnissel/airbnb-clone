@@ -30,18 +30,19 @@ export const placesStore=[
         location:"france",
         dates:{
             date_1:{
-                start_date_1: "01.06.2024",
-                end_date_1: "05.06.2024"
+                start_date: "06.01.2024",
+                end_date: "12.01.2024"
             },
             date_2:{
-                start_date_2: "15.06.2024",
-                end_date_2: "20.06.2024"
+                start_date: "15.06.2024",
+                end_date: "20.06.2024"
             },
             date_3:{
-                start_date_3: "22.06.2024",
-                end_date_3: "26.06.2024"
+                start_date: "22.06.2024",
+                end_date: "26.06.2024"
             }
-        }
+        },
+        reviews: ["First big mountain for me"]
     },
 
     {
@@ -63,7 +64,14 @@ export const placesStore=[
         carouselPic3: mountain4,
         carouselPic4: mountain5,
         carouselPic5: mountain6,
-        location:"france"
+        location:"france",
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Very nice guide", "Top of Switzerland!!", "Great mountain"]
     },
 
     {
@@ -85,7 +93,14 @@ export const placesStore=[
         carouselPic3: mountain4,
         carouselPic4: mountain5,
         carouselPic5: mountain6,
-        location:"switzerland"
+        location:"switzerland",
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Very nice guide", "Top of Switzerland!!", "Great mountain"]
     },
 
     {
@@ -107,7 +122,14 @@ export const placesStore=[
         carouselPic3: mountain4,
         carouselPic4: mountain5,
         carouselPic5: mountain6,
-        location:"switzerland"
+        location:"switzerland",
+        dates:{
+            date_1:{
+                start_date: "07.08.2024",
+                end_date: "10.08.2024"
+            }
+        },
+        reviews:["Very nice guide", "Top of Switzerland!!", "Great mountain"]
     },
 
     {
@@ -130,7 +152,13 @@ export const placesStore=[
         carouselPic4: mountain5,
         carouselPic5: mountain6,
         location:"switzerland",
-        comment:"Awesome tour"
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Awesome tour", "Top of Swiss"]
     },
 
     {
@@ -153,7 +181,13 @@ export const placesStore=[
         carouselPic4: mountain5,
         carouselPic5: mountain6,
         location:"switzerland",
-        comment:"top of switzerland!"
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Very nice guide", "Top of Switzerland!!", "Great mountain"]
     },
 
     {
@@ -175,7 +209,14 @@ export const placesStore=[
         carouselPic3: mountain4,
         carouselPic4: mountain5,
         carouselPic5: mountain6,
-        location:"switzerland"
+        location:"switzerland",
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Very nice guide", "Top of Switzerland!!", "Great mountain"]
 
     },
 
@@ -187,7 +228,7 @@ export const placesStore=[
         name:"Stubai Ultratrail",
         name_search:"Stubai Ultratrail",
         organizer:"planB",
-        date:"28.06.24 - 29.06.24",
+        date:"28.06.2024 - 29.06.2024",
         price: 145,
         duration_days:"1",
         season:"summer",
@@ -198,7 +239,14 @@ export const placesStore=[
         carouselPic3: mountain4,
         carouselPic4: mountain5,
         carouselPic5: mountain6,
-        location:"austria"
+        location:"austria",
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Very nice run", "Best in Austria!!", "Great mountains", "Well organized", "Good people", "hey, lksajdflkfkl, skjldfhajhfk sfkjsa \n fjlksjfkjsklfasf sjf, klasd asjdkfl, ksldjfklsjafkljsaklfklsa \n fjskjs dfksdfksdajfksa fjskfjklsjfkljsf  kjsdkfljksjfks \n jkjkfj sfkjksfjklsafkjskf kljfkjksjfks \n jsklfjalksjfklsjkflj ksjfksjfkjsklfjsk flkhsafklsjfklsadlfjkasf, kalsdfjkhasfsahfdsadkfjsadf, klashdfuhsadf"]
     },
 
     {
@@ -208,7 +256,7 @@ export const placesStore=[
         name:"Wildstrubel by UTMB",
         name_search:"Wildstrubel by UTMB",
         organizer:"UTMB",
-        date:"12.09.24 - 15.09.24",
+        date:"12.09.2024 - 15.09.2024",
         price: 130,
         duration_days:"1",
         season:"summer",
@@ -219,7 +267,14 @@ export const placesStore=[
         carouselPic3: mountain4,
         carouselPic4: mountain5,
         carouselPic5: mountain6,
-        location:"switzerland"
+        location:"switzerland",
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Very nice guide", "Top of Switzerland!!", "Great mountain"]
     },
 
     {
@@ -229,7 +284,7 @@ export const placesStore=[
         name:"Trans Alpin Run (TAR)",
         name_search:"Trans Alpin Run",
         organizer:"planB",
-        date:"07.09.24 - 13.09.24",
+        date:"07.09.2024 - 13.09.2024",
         price: 1125,
         duration_days:"8",
         season:"summer",
@@ -240,7 +295,14 @@ export const placesStore=[
         carouselPic3: mountain4,
         carouselPic4: mountain5,
         carouselPic5: mountain6,
-        location:"germany"
+        location:"germany",
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Very nice guide", "Top of Switzerland!!", "Great mountain"]
     },
 
     {
@@ -261,7 +323,14 @@ export const placesStore=[
         carouselPic3: mountain4,
         carouselPic4: mountain5,
         carouselPic5: mountain6,
-        location:"switzerland"
+        location:"switzerland",
+        dates:{
+            date_1:{
+                start_date: "07.07.2024",
+                end_date: "10.07.2024"
+            }
+        },
+        reviews:["Very nice guide", "Top of Switzerland!!", "Great mountain"]
     }
 
 

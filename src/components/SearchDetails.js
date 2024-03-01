@@ -14,13 +14,13 @@ import SearchPageFooter from './SearchPageFooter';
 const SearchDetails = (props) => {
 
 
-    const [openFilter, setOpenFilter] = useState(false); // toggle the filter dropdowm
+    /*const [openFilter, setOpenFilter] = useState(false); // toggle the filter dropdowm
 
     const [openPets, setOpenPets] = useState(false);   // topggle the pets dropdown
     const [petReviewes, setPetReviews] = useState(false);  // num of reviewes for pets
 
     const [coupleToggle, setCoupleToggle] = useState(false);  // toggle the couple button
-    const [co, setCo] = useState(false);
+    const [co, setCo] = useState(false);*/
 
     const params = useParams();
     const { loc } = params;
@@ -46,7 +46,7 @@ const SearchDetails = (props) => {
 
     ]
 
-    const openFilterHandler = () => {  // toggling the filter dropdown
+    /*const openFilterHandler = () => {  // toggling the filter dropdown
         setOpenFilter(!openFilter)
         setOpenPets(false)
         setCoupleToggle(false)
@@ -117,15 +117,15 @@ const SearchDetails = (props) => {
         setPetReviews(false)
         setCo(false)
 
-    }
+    }*/
 
  
 
     return (
         <div className='searchDeatilsMainParent'>
-            {!coupleToggle && !openPets && <p className='text-2xl flex relative uppercase fof left-24 top-36'>Toatl {placeDetailsArray.length}  Stays in {loc}  </p>}
+            <p className='text-2xl flex relative uppercase fof left-24 top-36'>Toatl {placeDetailsArray.length}  Stays in {loc}  </p>
 
-            <div className='functionalityButtonsHold cursor-pointer flex gap-4'>
+            {/*<div className='functionalityButtonsHold cursor-pointer flex gap-4'>
                 <img src={filterbtn} className="w-36 zoom" onClick={openFilterHandler} />
 
                 <div className='flex coupleHold mt-3 zoom' onClick={openCoupleHandler}>
@@ -138,9 +138,9 @@ const SearchDetails = (props) => {
                     <p className=' inline-block'> Pet Friendly </p>
 
                 </div>
-            </div>
+            </div>*/}
 
-            {openFilter && <div className='dropdownFilter rounded-2xl capitalize'>
+            {/*openFilter && <div className='dropdownFilter rounded-2xl capitalize'>
                 <p className=" cursor-pointer pt-10 pr-4" onClick={lowToHighFilter} >  Low to high </p>
                 <br />
 
@@ -150,21 +150,21 @@ const SearchDetails = (props) => {
                 </div>
 
 
-            </div>}
+            </div>*/}
 
-            {openPets && <div className='selectDropDown'>
+            {/*openPets && <div className='selectDropDown'>
 
                 <div onClick={petsFilter} className=" pt-4 mb-8 cursor-pointer h-2 ">  Yes </div>
                 <div onClick={nonPetsHandler} className="cursor-pointer h-2">No   </div>
-            </div>}
+            </div>*/}
 
-            <div className='zindex'>
+            {/*<div className='zindex'>
                 {coupleToggle && <div className='selectDropDownCouple cursor-pointer'>
                     <div onClick={coupleFilter} className=" pt-4 mb-8 cursor-pointer h-2">  Yes </div>
                     <div onClick={noncoupleHandler} className="cursor-pointer h-2">No </div>
                 </div>
                 }
-            </div>
+            </div>*/}
 
 
             <div className=' topSearchLine absolute bg-slate-100'></div>
@@ -199,8 +199,8 @@ const SearchDetails = (props) => {
 
                                 <p className=' inline-block relative text-xl mt-1 fof revSearchData'><AiFillStar className=' fill-red-400 pb-1 text-3xl inline-block' />  {item.stars} ({Math.floor(Math.random() * (999 - 100 + 1) + 100)}) </p>
                                 <p className='SDPprice'> ${item.price} </p>
-                                {petReviewes && <p className=' inline-block petWlcHold'> <img src='https://static.vecteezy.com/system/resources/previews/005/484/042/original/dog-logo-illustration-free-vector.jpg' className=' w-16 h-16 inline-block' />  Pets Are welcome </p>}
-                                {co && <p className='coupleFriendlyHold relative'> <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/couple-3431093-2863604.png" className='w-12 pt-1 h-10 pl-2 inline-block' /> Couple Friendly options </p>}
+                                {/*petReviewes && <p className=' inline-block petWlcHold'> <img src='https://static.vecteezy.com/system/resources/previews/005/484/042/original/dog-logo-illustration-free-vector.jpg' className=' w-16 h-16 inline-block' />  Pets Are welcome </p>}
+                                {co && <p className='coupleFriendlyHold relative'> <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/couple-3431093-2863604.png" className='w-12 pt-1 h-10 pl-2 inline-block' /> Couple Friendly options </p>*/}
                             </Link>
                         </div>
 

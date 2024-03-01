@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { AiOutlineSearch } from "react-icons/ai"
 import { Link } from 'react-router-dom';
-import CalendarNavBar from './CalendarNavBar';
+//import CalendarNavBar from './CalendarNavBar';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { counterActions } from '../redux/State';
@@ -20,6 +20,9 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import GoogleButton from 'react-google-button'
 import { placesStore } from '../store/Store'
 
+
+export let startDate = "";
+export let endDate = "";
 
 const Home = ({ toggle, setToggle }) => {
 
@@ -86,6 +89,29 @@ const Home = ({ toggle, setToggle }) => {
       setInfants(infants - 1)
     }
   }
+
+  const [selectedDates, setSelectedDates] = useState({ startDate: '', endDate: '' });
+
+    // Define functions to handle date selection
+    const handleStartDateChange = (event) => {
+        setSelectedDates({ ...selectedDates, startDate: event.target.value });
+    };
+
+    const handleEndDateChange = (event) => {
+        setSelectedDates({ ...selectedDates, endDate: event.target.value });
+    };
+  
+  // previously in Tab1.js
+  /*const [startDate, setStartDate] = useState('');
+      const [endDate, setEndDate] = useState('');*/
+  
+      /*const handleStartDateChange = (event) => {
+          setStartDate(event.target.value);
+      };
+  
+      const handleEndDateChange = (event) => {
+          setEndDate(event.target.value);
+      };*/
 
 
 
@@ -155,7 +181,7 @@ const Home = ({ toggle, setToggle }) => {
             <div className="inline-flex items-center max-w-full">
 
 
-
+              <button onClick={() => setToggle(!toggle)}>Open</button>
               <label htmlFor='my-modal-4' className='navbarAnyHold flex inpWidth2 cursor-pointer'>
                 <p className=' inline-block'> Wohin <p className=' inline-block ml-1'> | </p> </p>
                 <p className=' inline-block'> Wann <p className=' inline-block ml-1'> | </p> </p>
@@ -165,6 +191,7 @@ const Home = ({ toggle, setToggle }) => {
 
 
               <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+              {!toggle && (
               <label htmlFor="my-modal-4" className="modal cursor-pointer">
                 <label className="modal-box relative" htmlFor="">
                   <input placeholder="Search For Your Destanation" onChange={inputValueHandler} onClick={() => setToggle(!toggle)} value={inputValue} type="text" className="flex outline-none items-center flex-grow-0 flex-shrink pl-2 relative inputBox  border  px-1  py-1" />
@@ -266,7 +293,33 @@ const Home = ({ toggle, setToggle }) => {
 
                         </TabPanel>
                         <TabPanel>
-                          <CalendarNavBar />
+
+                          {/*<CalendarNavBar />*/}
+                          <div className='select-start-date'>
+                            <label htmlFor="start-date">Start Date:</label>
+                            <input
+                                type="date"
+                                id="start-date"
+                                value={selectedDates.startDate}
+                                onChange={handleStartDateChange}
+                            />
+                        </div>
+                        <div className='select-end-date'>
+                            <label htmlFor="end-date">End Date:</label>
+                            <input
+                                type="date"
+                                id="end-date"
+                                value={selectedDates.endDate}
+                                onChange={handleEndDateChange}
+                            />
+                        </div>
+                          { startDate = selectedDates.startDate }
+                          { endDate = selectedDates.endDate }
+                          {console.log(toggle)};
+                          <button onClick={() => setToggle(!toggle)}>Search</button>
+                          {console.log(toggle)}
+
+
                         </TabPanel>
 
                         <TabPanel>
@@ -333,7 +386,7 @@ const Home = ({ toggle, setToggle }) => {
 
                 </label>
               </label>
-
+            )}
             </div>
           </div>
         </div>

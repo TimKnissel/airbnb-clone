@@ -1,3 +1,11 @@
+.select-start-date {
+    margin-bottom: 0.5rem;
+}
+
+.select-end-date {
+    margin-bottom: 5rem;
+}
+
 .card {
     width: 21.6rem;
     min-height: 23.8rem;
