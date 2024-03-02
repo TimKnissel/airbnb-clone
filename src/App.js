@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <main>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/" exact element={<>  <Home toggle={open} setToggle={setOpen} /> <TabsComp toggle={open} setToggle={setOpen} />  <SearchPageFooter /> </>} />
             {/*<Route path="/" exact element={<>  <Home /> <TabsComp toggle={open} setToggle={setOpen} />  <SearchPageFooter /> </>} />*/}
