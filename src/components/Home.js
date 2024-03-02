@@ -390,7 +390,7 @@ const Home = ({ toggle, setToggle }) => {
         </div>
         {/* end search bar */}
         {/* login */}
-        {/*<div className="flex-initial">
+        <div className="flex-initial">
           <div className="flex justify-end items-center relative">
             <div className="flex mr-4 items-center">
               <div className="inline-block py-2 px-3 hover:bg-gray-200 rounded-full" href="#">
@@ -410,7 +410,7 @@ const Home = ({ toggle, setToggle }) => {
               <div className="inline relative">
                 {<button type="button" className="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg">
                   <div className="pl-1 googleAuthBtnHold w-10">
-                    <LoginSocialGoogle
+                    {/*<LoginSocialGoogle
                       client_id={`${process.env.REACT_APP_AUTH_CLIENT}.apps.googleusercontent.com`}
                       scope="openid profile email"
                       discoveryDocs="claims_supported"
@@ -424,7 +424,7 @@ const Home = ({ toggle, setToggle }) => {
                       }}
                     >
                       <GoogleButton type='dark' label='' className='googleAuthBtn' />
-                    </LoginSocialGoogle>
+                    </LoginSocialGoogle>*/}
                   </div>
                   {userimage.length > 2 ? <img src={userimage} className="UserLoginImage ml-5" /> : <div className="block flex-grow-0 flex-shrink-0 h-10 w-12 pl-5">
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', height: '100%', width: '100%', fill: 'currentcolor' }}>
@@ -437,7 +437,7 @@ const Home = ({ toggle, setToggle }) => {
               </div>
             </div>
           </div>
-          </div>*/}
+          </div>
         {/* end login */}
       </nav >
 
