@@ -15,9 +15,7 @@ import { AiOutlineMinusCircle } from "react-icons/ai"
 import Select from 'react-select';
 import { IoLocationOutline } from "react-icons/io5";
 
-import { LoginSocialGoogle } from 'reactjs-social-login';
 import { StickyContainer, Sticky } from 'react-sticky';
-import GoogleButton from 'react-google-button'
 import { placesStore } from '../store/Store'
 
 
@@ -392,7 +390,7 @@ const Home = ({ toggle, setToggle }) => {
         </div>
         {/* end search bar */}
         {/* login */}
-        <div className="flex-initial">
+        {/*<div className="flex-initial">
           <div className="flex justify-end items-center relative">
             <div className="flex mr-4 items-center">
               <div className="inline-block py-2 px-3 hover:bg-gray-200 rounded-full" href="#">
@@ -439,7 +437,7 @@ const Home = ({ toggle, setToggle }) => {
               </div>
             </div>
           </div>
-        </div>
+          </div>*/}
         {/* end login */}
       </nav >
 

@@ -1,7 +1,7 @@
 import { placesStore } from '../store/Store'
 import { useParams } from 'react-router-dom';
 import "../styles/Checkout.css"
-import PaymentForm from './PaymentForm';
+//import PaymentForm from './PaymentForm';
 import { Link } from 'react-router-dom';
 
 const Checkout = (props) => {
@@ -74,7 +74,7 @@ const Checkout = (props) => {
 
       </div>
 
-      <PaymentForm amount={price} days={daysFinal} place={name} />
+      {/*<PaymentForm amount={price} days={daysFinal} place={name} />*/}
 
     </div>
   )

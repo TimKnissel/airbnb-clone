@@ -1,5 +1,4 @@
 import React from 'react'
-import GooglePayButton from "@google-pay/button-react";
 import "../styles/Card.css";
 import creditCard from "../styles/side.png"
 import wallet from "../styles/wal.png";
@@ -8,7 +7,15 @@ import { FaAirbnb } from "react-icons/fa";
 
 const Card = () => {
     return (
-        <div className='googlePayPaymentHold'>
+        <div>
+            <p>google button</p>
+        </div>
+         )
+        }
+        
+    export default Card
+    
+        {/*<div className='googlePayPaymentHold'>
 
 
             <div className='gpayAsset1Hold flex justify-end'>
@@ -69,9 +76,5 @@ const Card = () => {
             </div>
 
 
-        </div>
-    )
-}
-
-export default Card
+                </div>*/}
 
